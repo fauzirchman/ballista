@@ -25,6 +25,9 @@ html
                 a.nav-link href="#"  About
     	    ul.navbar-nav.my-2.my-lg-0
     	      li.nav-item
-                = link_to 'My Account', my_account_path, remote: true, class: 'nav-link'
+                - if user_signed_in?
+                  = link_to "#{current_user.email} (logout)", destroy_user_session_path, method: :delete, class: 'nav-link'
+                - else
+                  = link_to 'My Account', my_account_path, remote: true, class: 'nav-link'
     .container.main-body
       = yield
