@@ -6,20 +6,20 @@ $('#myAccountModal').modal('show');
 
 var loginFormValidator = $("form#loginForm").validate({
   rules: {
-    email: {
+    'user[email]': {
       required: true,
       email: true
     },
-    password: {
+    'user[password]': {
       required: true,
       minlength: 6
     }
   },
   messages: {
-    email: {
+    'user[email]': {
       email: "Your email address must be in the format of name@domain.com"
     },
-    password: {
+    'user[password]': {
       minlength: "Only 6-digit minimal password allowed"
     }
   }

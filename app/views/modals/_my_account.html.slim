@@ -1,7 +1,7 @@
 #myAccountModal.modal.fade aria-hidden="true" aria-labelledby="myAccountModalLabel" role="dialog" tabindex="-1" 
   .modal-dialog role="document" 
 
-    form#loginForm
+    = form_for(@user, as: :user, url: session_path(@user), method: :post, html: { id: 'loginForm' }) do |f|
       .modal-content.section-login
         .modal-header
           h5#myAccountModalLabel.modal-title My Account
@@ -9,15 +9,15 @@
             span aria-hidden="true"  ×
         .modal-body
           .form-group
-            label for="loginInputEmail1"  Email address
-            input#loginInputEmail1.form-control aria-describedby="emailHelp" placeholder=("Enter email") name="email" type="email" /
+            = f.label :email
+            = f.email_field :email, id: 'login_user_email', class: 'form-control', placeholder: 'Enter email'
             small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
           .form-group
-            label for="loginInputPassword1"  Password
-            input#loginInputPassword1.form-control placeholder="Password" name="password" type="password" /
+            = f.label :password
+            = f.password_field :password, id: 'login_user_password', class: 'form-control', placeholder: 'Password'
           .form-group.form-check
-            input#exampleCheck1.form-check-input type="checkbox" /
-            label.form-check-label for="exampleCheck1"  Check me out
+            = f.check_box :remember_me, class: 'form-check-input'
+            = f.label :remember_me, 'Check me out', class: 'form-check-label'
         .modal-footer
           button.btn.btn-secondary.go-to-register-1-email type="button" Register
           button.btn.btn-primary type="submit" Login
