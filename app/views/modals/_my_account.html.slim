@@ -1,12 +1,119 @@
 #myAccountModal.modal.fade aria-hidden="true" aria-labelledby="myAccountModalLabel" role="dialog" tabindex="-1" 
   .modal-dialog role="document" 
-    .modal-content
+    .modal-content.section-login
       .modal-header
         h5#myAccountModalLabel.modal-title My Account
         button.close aria-label="Close" data-dismiss="modal" type="button" 
           span aria-hidden="true"  ×
       .modal-body
-        | \...
+        form
+          .form-group
+            label for="exampleInputEmail1"  Email address
+            input#exampleInputEmail1.form-control aria-describedby="emailHelp" placeholder=("Enter email") type="email" /
+            small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+          .form-group
+            label for="exampleInputPassword1"  Password
+            input#exampleInputPassword1.form-control placeholder="Password" type="password" /
+          .form-group.form-check
+            input#exampleCheck1.form-check-input type="checkbox" /
+            label.form-check-label for="exampleCheck1"  Check me out
       .modal-footer
-        button.btn.btn-secondary type="button" Register
+        button.btn.btn-secondary.go-to-register-1-email type="button" Register
         button.btn.btn-primary type="button" Login
+    .modal-content.section-register-1-email style="display: none;"
+      .modal-header
+        h5#myAccountModalLabel.modal-title My Account - Email Registration
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  ×
+      .modal-body
+        form
+          .form-group
+            label for="exampleInputEmail1"  Email address
+            input#exampleInputEmail1.form-control aria-describedby="emailHelp" placeholder=("Enter email") type="email" /
+            small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+      .modal-footer
+        button.btn.btn-secondary.go-to-login type="button" Back
+        button.btn.btn-primary.go-to-register-2-password type="button" Next
+    .modal-content.section-register-2-password style="display: none;"
+      .modal-header
+        h5#myAccountModalLabel.modal-title My Account - Secure Your Account
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  ×
+      .modal-body
+        form
+          .form-group
+            label for="exampleInputPassword1"  Password
+            input#exampleInputPassword1.form-control placeholder="Password" type="password" /
+          .form-group
+            label for="exampleInputPassword1"  Confirm Password
+            input#exampleInputPassword1.form-control placeholder="Confirm Password" type="password" /
+      .modal-footer
+        button.btn.btn-secondary.go-to-register-1-email type="button" Back
+        button.btn.btn-primary.go-to-register-3-name type="button" Next
+    .modal-content.section-register-3-name style="display: none;"
+      .modal-header
+        h5#myAccountModalLabel.modal-title My Account - How Do We Call You?
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  ×
+      .modal-body
+        form
+          .form-group
+            label for="exampleInputName1"  Name
+            input#exampleInputName1.form-control placeholder="Full Name" type="text" /
+      .modal-footer
+        button.btn.btn-secondary.go-to-register-2-password type="button" Back
+        button.btn.btn-primary.go-to-register-4-detail type="button" Next
+    .modal-content.section-register-4-detail style="display: none;"
+      .modal-header
+        h5#myAccountModalLabel.modal-title My Account - Gives Your Profile
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  ×
+      .modal-body
+        form
+          .form-group
+            label for="exampleInputBirthday1"  Birthday
+            input#exampleInputBirthday1.form-control placeholder="Birthday" type="text" /
+          .form-group
+            label for="exampleInputGender1"  Gender
+            input#exampleInputGender1.form-control placeholder="Gender" type="text" /
+          .form-group
+            label for="exampleInputLocation1"  Location
+            input#exampleInputLocation1.form-control placeholder="Location" type="text" /
+          .form-group
+            label for="exampleInputAddress1"  Address
+            input#exampleInputAddress1.form-control placeholder="Address" type="textarea" /
+      .modal-footer
+        button.btn.btn-secondary.go-to-register-3-name type="button" Back
+        button.btn.btn-primary type="button" Done
+
+javascript:
+  // $(document).ready(function(){
+    
+  // });
+  $('.go-to-login').click(function(){
+    $('.section-register-1-email').hide();
+    $('.section-login').show();
+  });
+
+  $('.go-to-register-1-email').click(function(){
+    $('.section-login').hide();
+    $('.section-register-2-password').hide();
+    $('.section-register-1-email').show();
+  });
+
+  $('.go-to-register-2-password').click(function(){
+    $('.section-register-1-email').hide();
+    $('.section-register-3-name').hide();
+    $('.section-register-2-password').show();
+  });
+
+  $('.go-to-register-3-name').click(function(){
+    $('.section-register-2-password').hide();
+    $('.section-register-4-detail').hide();
+    $('.section-register-3-name').show();
+  });
+
+  $('.go-to-register-4-detail').click(function(){
+    $('.section-register-3-name').hide();
+    $('.section-register-4-detail').show();
+  });
