@@ -3,3 +3,98 @@ if (!$('.js-modal-my-account-wrapper').length)
 
 $('.js-modal-my-account-wrapper').html('<%= j render "modals/my_account" %>');
 $('#myAccountModal').modal('show');
+
+var loginFormValidator = $("form#loginForm").validate({
+  rules: {
+    email: {
+      required: true,
+      email: true
+    },
+    password: {
+      required: true,
+      minlength: 6
+    }
+  },
+  messages: {
+    email: {
+      email: "Your email address must be in the format of name@domain.com"
+    },
+    password: {
+      minlength: "Only 6-digit minimal password allowed"
+    }
+  }
+});
+
+var registerFormValidator = $("form#registerForm").validate({
+  rules: {
+    email: {
+      required: true,
+      email: true
+    },
+    password: {
+      required: true,
+      minlength: 6
+    },
+    password_confirmation: {
+      required: true,
+      minlength: 6,
+      equalTo: "#exampleInputPassword1"
+    },
+    name: "required",
+    birthday: "required",
+    gender: "required",
+    location: "required",
+    address: "required"
+  },
+  messages: {
+    email: {
+      required: "We need your email address to contact you",
+      email: "Your email address must be in the format of name@domain.com"
+    },
+    password: {
+      required: "We need your password to make it secure",
+      minlength: "Only 6-digit minimal password allowed"
+    },
+    password_confirmation: {
+      required: "We need your password to make it secure",
+      minlength: "Only 6-digit minimal password allowed",
+      equalTo: "Password doesn't match"
+    },
+    name: "Please specify your name",
+  }
+});
+
+// Navigation
+$('.go-to-login').click(function(){
+  $('.section-register-1-email').hide();
+  $('.section-login').show();
+});
+
+$('.go-to-register-1-email').click(function(){
+  $('.section-login').hide();
+  $('.section-register-2-password').hide();
+  $('.section-register-1-email').show();
+});
+
+$('.go-to-register-2-password').click(function(){
+  if (registerFormValidator.element('#exampleInputEmail1')) {
+    $('.section-register-1-email').hide();
+    $('.section-register-3-name').hide();
+    $('.section-register-2-password').show();
+  }
+});
+
+$('.go-to-register-3-name').click(function(){
+  if (registerFormValidator.element('#exampleInputPassword1') && registerFormValidator.element('#exampleInputPasswordConfirmation1')) {
+    $('.section-register-2-password').hide();
+    $('.section-register-4-detail').hide();
+    $('.section-register-3-name').show();
+  }
+});
+
+$('.go-to-register-4-detail').click(function(){
+  if (registerFormValidator.element('#exampleInputName1')) {
+    $('.section-register-3-name').hide();
+    $('.section-register-4-detail').show();
+  }
+});
