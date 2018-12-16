@@ -5,4 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :profile
+
+  after_create :auto_create_profile
+
+  attr_accessor :name, :birthday, :gender, :location, :address
+
+  private
+
+    def auto_create_profile
+      create_profile(name: name, birthday: birthday, gender: gender, location: location, address: address) unless profile.present?
+    end
 end

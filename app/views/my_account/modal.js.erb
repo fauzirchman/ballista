@@ -40,11 +40,11 @@ var registerFormValidator = $("form#registerForm").validate({
       minlength: 6,
       equalTo: "#user_password"
     },
-    name: "required",
-    birthday: "required",
-    gender: "required",
-    location: "required",
-    address: "required"
+    'user[name]': "required",
+    'user[birthday]': "required",
+    'user[gender]': "required",
+    'user[location]': "required",
+    'user[address]': "required"
   },
   messages: {
     'user[email]': {
@@ -60,7 +60,7 @@ var registerFormValidator = $("form#registerForm").validate({
       minlength: "Only 6-digit minimal password allowed",
       equalTo: "Password doesn't match"
     },
-    name: "Please specify your name",
+    'user[name]': "Please specify your name",
   }
 });
 
@@ -93,7 +93,7 @@ $('.go-to-register-3-name').click(function(){
 });
 
 $('.go-to-register-4-detail').click(function(){
-  if (registerFormValidator.element('#exampleInputName1')) {
+  if (registerFormValidator.element('#user_name')) {
     $('.section-register-3-name').hide();
     $('.section-register-4-detail').show();
   }

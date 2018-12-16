@@ -58,8 +58,8 @@
             span aria-hidden="true"  ×
         .modal-body
           .form-group
-            label for="exampleInputName1"  Name
-            input#exampleInputName1.form-control placeholder="Full Name" name="name" type="text" /
+            = f.label :name
+            = f.text_field :name, class: 'form-control', placeholder: 'Full Name'
         .modal-footer
           button.btn.btn-secondary.go-to-register-2-password type="button" Back
           button.btn.btn-primary.go-to-register-4-detail type="button" Next
@@ -70,17 +70,17 @@
             span aria-hidden="true"  ×
         .modal-body
           .form-group
-            label for="exampleInputBirthday1"  Birthday
-            input#exampleInputBirthday1.form-control placeholder="Birthday" name="birthday" type="text" /
+            = f.label :birthday
+            = f.text_field :birthday, class: 'form-control', placeholder: 'Your Birthday'
           .form-group
-            label for="exampleInputGender1"  Gender
-            input#exampleInputGender1.form-control placeholder="Gender" name="gender" type="text" /
+            = f.label :gender
+            = f.text_field :gender, class: 'form-control', placeholder: 'Male/Female'
           .form-group
-            label for="exampleInputLocation1"  Location
-            input#exampleInputLocation1.form-control placeholder="Location" name="location" type="text" /
+            = f.label :location
+            = f.text_field :location, class: 'form-control', placeholder: 'Your Location'
           .form-group
-            label for="exampleInputAddress1"  Address
-            input#exampleInputAddress1.form-control placeholder="Address" name="address" type="textarea" /
+            = f.label :address
+            = f.text_area :address, class: 'form-control', placeholder: 'Where Do You Live'
         .modal-footer
           button.btn.btn-secondary.go-to-register-3-name type="button" Back
           button.btn.btn-primary type="submit" Done
