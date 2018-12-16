@@ -1,3 +1,5 @@
 class MyAccountController < ApplicationController
-  def modal; end
+  def modal
+  	@user = User.new
+  end
 end

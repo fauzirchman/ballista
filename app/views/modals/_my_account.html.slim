@@ -22,7 +22,7 @@
           button.btn.btn-secondary.go-to-register-1-email type="button" Register
           button.btn.btn-primary type="submit" Login
 
-    form#registerForm
+    = form_for(@user, as: :user, url: registration_path(@user), method: :post, html: { id: 'registerForm' }) do |f|
       .modal-content.section-register-1-email style="display: none;"
         .modal-header
           h5#myAccountModalLabel.modal-title My Account - Email Registration
@@ -30,8 +30,8 @@
             span aria-hidden="true"  ×
         .modal-body
           .form-group
-            label for="exampleInputEmail1"  Email address
-            input#exampleInputEmail1.form-control aria-describedby="emailHelp" placeholder=("Enter email") name="email" type="email" /
+            = f.label :email
+            = f.email_field :email, class: 'form-control', placeholder: 'Enter email'
             small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
         .modal-footer
           button.btn.btn-secondary.go-to-login type="button" Back
@@ -43,11 +43,11 @@
             span aria-hidden="true"  ×
         .modal-body
           .form-group
-            label for="exampleInputPassword1"  Password
-            input#exampleInputPassword1.form-control placeholder="Password" name="password" type="password" /
+            = f.label :password
+            = f.password_field :password, class: 'form-control', placeholder: 'Password'
           .form-group
-            label for="exampleInputPasswordConfirmation1"  Confirm Password
-            input#exampleInputPasswordConfirmation1.form-control placeholder="Confirm Password" name="password_confirmation" type="password" /
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password'
         .modal-footer
           button.btn.btn-secondary.go-to-register-1-email type="button" Back
           button.btn.btn-primary.go-to-register-3-name type="button" Next
