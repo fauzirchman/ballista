@@ -16,4 +16,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require_tree .
